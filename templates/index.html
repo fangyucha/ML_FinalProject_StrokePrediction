@@ -31,7 +31,7 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#aboutdiabetes">About diabetes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#aboutstroke">About stroke</a></li>
                     <li class="nav-item"><a class="nav-link" href="#prediction">Prediction</a></li>
                     <li class="nav-item"><a class="nav-link" href="#ourmodel">About our model</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Diagram</a></li>
@@ -50,19 +50,19 @@
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 mb-5">We provide knowledges to let u understand about diabetes and let u
-                        predict the probability you get diabetes</p>
-                    <a class="btn btn-primary btn-xl" href="#aboutdiabetes">Get started</a>
+                    <p class="text-white-75 mb-5">We provide knowledge to let u understand about stroke and let u
+                        predict the probability you get stroke</p>
+                    <a class="btn btn-primary btn-xl" href="#aboutstroke">Get started</a>
                 </div>
             </div>
         </div>
     </header>
     <!-- About-->
-    <section class="page-section bg-primary" id="aboutdiabetes">
+    <section class="page-section bg-primary" id="aboutstroke">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">About diabetes!</h2>
+                    <h2 class="text-white mt-0">About stroke!</h2>
                     <hr class="divider divider-light" />
                     <p class="text-white-75 mb-4">Start Bootstrap has everything you need to get your new website up and
                         running in no time! Choose one of our open source, free to download, and easy to use themes! No
@@ -79,7 +79,7 @@
                 <div class="col-lg-8 col-xl-6 text-center">
                     <h2 class="mt-0">Start prediction!</h2>
                     <hr class="divider" />
-                    <p class="text-muted mb-5">predict the probability you get diabetes!</p>
+                    <p class="text-muted mb-5">predict the probability you get stroke!</p>
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
@@ -112,15 +112,16 @@
                             </select>
                             <div class="invalid-feedback" data-sb-feedback="gender:required">gender is required.</div>
                         </div>
-
+                        
                         <!-- age input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="age" type="text" placeholder="Enter your age"
+                            <input class="form-control" id="age" type="text" value="12"  oninput="judgeage();" placeholder="Enter your age"
                                 data-sb-validations="required" />
-                            <label for="age">age</label>
-                            <div class="invalid-feedback" data-sb-feedback="age:required">age is required.</div>
+                            <label for="age">Age</label>
+                            <div id="showage"></div>
+                            <div class="invalid-feedback" data-sb-feedback="age:required" >age is required.</div>
                         </div>
-
+                   
                         <!-- hypertension input-->
                         <div class="form-floating mb-3">
                             <select class="form-control" id="hypertension" type="hypertension"
@@ -383,6 +384,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
 </body>
 
 </html>

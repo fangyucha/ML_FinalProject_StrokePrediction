@@ -56,4 +56,30 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
+    // Age.addEventListener("oninput")
+    // console.log("12")
+    console.log(Age.value)
+    console.log("12")
+    Age_s=JSON.stringify(Age.value)
+
+
+
+
 });
+let space=document.getElementById('showage')
+function judgeage(){
+    let Age =document.getElementById("age");
+    // fetch("/judge_age",{method:'post',body:Age_s})
+    // .then(Response=>Response.text())
+    // .then(Response=>age(Response))
+    if (parseInt(Age.value)<=16){
+        console.log(Age.value)
+        age("輸入請大於16歲")
+    }
+    else{
+        age("")
+    }
+}
+function age(a){
+    space.innerHTML=a
+}

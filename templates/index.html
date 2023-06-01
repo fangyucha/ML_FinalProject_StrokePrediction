@@ -19,6 +19,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </head>
 
 <body id="page-top">
@@ -91,73 +92,69 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form action="/submit" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <form action="/submit" method="post" id="contactForm" novalidate>
                         <!-- id input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="id" type="text" placeholder="Enter your id..."
-                                data-sb-validations="required" />
+                            <input class="form-control" id="id" type="text" placeholder="Enter your id..." required />
                             <label for="id">id</label>
-                            <div class="invalid-feedback" data-sb-feedback="id:required">A id is required.</div>
+                            <div class="invalid-feedback">A id is required.</div>
                         </div>
 
 
                         <!-- gender input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="gender" type="gender" data-sb-validations="required"
-                                name="gender">
+                            <select class="form-control" id="gender" type="gender" required name="gender">
                                 <option value="">Choose your gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="gender:required">gender is required.</div>
+                            <div class="invalid-feedback">gender is required.</div>
                         </div>
 
                         <!-- age input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="age" type="text" placeholder="Enter your age"
-                                data-sb-validations="required" />
+                            <input class="form-control" id="age" type="text" placeholder="Enter your age" required />
                             <label for="age">age</label>
-                            <div class="invalid-feedback" data-sb-feedback="age:required">age is required.</div>
+                            <div class="invalid-feedback">age is required.</div>
                         </div>
 
                         <!-- hypertension input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="hypertension" type="hypertension"
-                                data-sb-validations="required" name="hypertension">
+                            <select class="form-control" id="hypertension" type="hypertension" required
+                                name="hypertension">
                                 <option value="">Do you have hypertension</option>
                                 <option value="0">No</option>
                                 <option value="1">Yes</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="hypertension:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- heart_disease input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="heart_disease" type="heart_disease"
-                                data-sb-validations="required" name="heart_disease">
+                            <select class="form-control" id="heart_disease" type="heart_disease" required
+                                name="heart_disease">
                                 <option value="">Do you have heart disease</option>
                                 <option value="0">No</option>
                                 <option value="1">Yes</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="heart_disease:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- ever_married input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="ever_married" type="ever_married"
-                                data-sb-validations="required" name="ever_married">
+                            <select class="form-control" id="ever_married" type="ever_married" required
+                                name="ever_married">
                                 <option value="">Have you ever married</option>
                                 <option value="No">No</option>
                                 <option value="Yes">Yes</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="ever_married:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- work_type input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="work_type" type="work_type" data-sb-validations="required"
-                                name="work_type">
+                            <select class="form-control" id="work_type" type="work_type" required name="work_type">
                                 <option value="">what's your work type</option>
                                 <option value="Govt_job">Government job</option>
                                 <option value="Never_worked">Never worked</option>
@@ -165,57 +162,55 @@
                                 <option value="Self-employed">Self-employed</option>
                                 <option value="children">children</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="work_type:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- Residence_type	 input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="Residence_type" type="Residence_type"
-                                data-sb-validations="required" name="Residence_type">
+                            <select class="form-control" id="Residence_type" type="Residence_type" required
+                                name="Residence_type">
                                 <option value="">Where do you live</option>
                                 <option value="Urban">Urban</option>
                                 <option value="Rural">Rural</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="Residence_type:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- avg_glucose_level input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="avg_glucose_level" type="text"
-                                placeholder="Enter your average glucose level..." data-sb-validations="required" />
+                                placeholder="Enter your average glucose level..." required />
                             <label for="avg_glucose_level">average glucose level</label>
-                            <div class="invalid-feedback" data-sb-feedback="avg_glucose_level:required">A average
+                            <div class="invalid-feedback">A average
                                 glucose level is required.</div>
                         </div>
 
                         <!-- bmi input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="bmi" type="text" placeholder="Enter your bmi..."
-                                data-sb-validations="required" />
+                            <input class="form-control" id="bmi" type="text" placeholder="Enter your bmi..." required />
                             <label for="bmi">bmi</label>
-                            <div class="invalid-feedback" data-sb-feedback="bmi:required">A bmi is required.</div>
+                            <div class="invalid-feedback">A bmi is required.</div>
                         </div>
 
                         <!-- smoking_status input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="smoking_status" type="smoking_status"
-                                data-sb-validations="required" name="smoking_status">
+                            <select class="form-control" id="smoking_status" type="smoking_status" required
+                                name="smoking_status">
                                 <option value="">What's your smoking status</option>
                                 <option value="smokes">smokes</option>
                                 <option value="never smoked">never smoked</option>
                                 <option value="formerly smoked">formerly smoked</option>
                             </select>
-                            <div class="invalid-feedback" data-sb-feedback="smoking_status:required">required.</div>
+                            <div class="invalid-feedback">required.</div>
                         </div>
 
 
                         <!-- Message input-->
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="message" type="text"
-                                placeholder="Enter your message here..." style="height: 10rem"
-                                data-sb-validations="required"></textarea>
+                                placeholder="Enter your message here..." style="height: 10rem" required></textarea>
                             <label for="message">Message</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
+                            <div class="invalid-feedback">A message is required.
                             </div>
                         </div>
                         <!-- Submit success message-->
@@ -239,8 +234,9 @@
                             <div class="text-center text-danger mb-3">Error sending message!</div>
                         </div>
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton"
-                                type="submit">Submit</button></div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -378,11 +374,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    -->
 </body>
 
 </html>

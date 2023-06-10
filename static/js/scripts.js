@@ -72,6 +72,7 @@ let space=document.getElementById('showage')
 
 function judgeage(){
     let Age =document.getElementById("age");
+    
     // fetch("/judge_age",{method:'post',body:Age_s})
     // .then(Response=>Response.text())
     // .then(Response=>age(Response))

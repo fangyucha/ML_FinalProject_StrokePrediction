@@ -100,7 +100,7 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form action="{{url_for('submit')}}" method="post" id="contactForm" novalidate>
+                    <form action="/submit" method="post" id="contactForm" novalidate>
                         <!-- id input-->
                         <!-- <div class="form-floating mb-3">
                             <input class="form-control" id="id" type="text" name="id" placeholder="Enter your id..." required />
@@ -189,7 +189,7 @@
                         <!-- avg_glucose_level input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="avg_glucose_level" type="text"
-                                placeholder="Enter your average glucose level..." name="avg_glucose" required />
+                                placeholder="Enter your average glucose level..."  required  name="avg_glucose_level"/>
                             <label for="avg_glucose_level">average glucose level</label>
                             <div class="invalid-feedback">A average
                                 glucose level is required.</div>
@@ -214,20 +214,21 @@
                             <div class="invalid-feedback">required.</div>
                         </div>
                         <div class="d-grid">
-                            <input class="btn btn-primary btn-xl" id="submitButton" type="submit">
+                            <input class="btn btn-primary btn-xl" id="submitButton"  type="submit">
                         </div>
                     </form>
-                    <div>
+                    <br><br>
                         <!--預測回傳值-->
-                        <h3>{{prediction}}</h3>
-                    </div>
+                        <center><h3 id="showResult"></h3></center>
+                        
+                 
                 </div>
             </div>
 
         </div>
         </div>
     </section>
-    <div>{{prediction}}</div>
+   
     <div id="aboutData">
         <center>
             <h2 class="mt-0">Data analyze</h2>
@@ -421,6 +422,8 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+        let showResult=document.getElementById('showResult')
+
         $(document).on('submit', '#contactForm', function (e) {
             console.log('hello');
             e.preventDefault();
@@ -439,11 +442,12 @@
                     bmi: $("#bmi").val(),
                     smoking_status: $("#smoking_status").val(),
                 },
-                success: function () {
-                    //alert('success');
+                success: function (response) {
+                    showResult.innerHTML=response;
                 }
             })
         });
+        
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

@@ -58,9 +58,9 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Age.addEventListener("oninput")
     // console.log("12")
-    console.log(Age.value)
+    // console.log(Age.value)
     console.log("12")
-    Age_s=JSON.stringify(Age.value)
+    // Age_s=JSON.stringify(Age.value)
 
 
 
@@ -69,6 +69,9 @@ window.addEventListener('DOMContentLoaded', event => {
 
 let sub=document.getElementById('submitButton');
 let space=document.getElementById('showage')
+
+let test=JSON.stringify('test')
+
 
 function judgeage(){
     let Age =document.getElementById("age");

@@ -1,7 +1,7 @@
 import joblib
-#model_pretrained = joblib.load('LoanOrNot-LR-20230508.pkl')
+
 import numpy as np
- 
+import pandas as pd
 from flask import Flask, request, render_template,url_for,redirect
 import json as js
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def formPage():
 @app.route("/submit", methods=['POST'])
 def submit():
     if request.method == 'POST':
-        id=request.form.get('id')
+        # id=request.form.get('id')
         gender=request.form.get('gender')
         age=request.form.get('age')
         have_hypertension=request.form.get('hypertension')
@@ -25,6 +25,7 @@ def submit():
         avg_glucose=request.form.get('avg_glucose')
         bmi=request.form.get('bmi')
         smoking_status=request.form.get('smoking_status')
+        smoking_status_Unknown = 0
         print(id,gender,age,have_hypertension,have_heartdisease,have_married,work_type,Residence_type,avg_glucose,bmi,smoking_status)
         if gender=='Female':
             gender_Female=1
@@ -86,7 +87,55 @@ def submit():
             smoking_status_smoke=0
             smoking_status_never=0
             smoking_status_former=1
-        return render_template('index.html')
+        
+        model = joblib.load('model/EasyEnsembleClassifier')
+        X = pd.Series(
+            {
+                'age':age,
+                'hypertension':have_hypertension,
+                'heart_disease':have_heartdisease,
+                'avg_glucose_level':avg_glucose,
+                'bmi':bmi,
+                'gender_Female':gender_Female,
+                'gender_Male':gedner_Male,
+                'ever_married_No':married_no,
+                'ever_married_Yes':married_yes,
+                'work_type_Govt_job':Govt_job, 
+                'work_type_Never_worked':never_worke,
+                'work_type_Private':private,
+                'work_type_Self-employed':self_employ,
+                'work_type_children':children,
+                'Residence_type_Rural':resident_type_rural,
+                'Residence_type_Urban':resident_type_urban,
+                'smoking_status_Unknown':smoking_status_Unknown,
+                'smoking_status_formerly smoked':smoking_status_former,
+                'smoking_status_never smoked':smoking_status_never,
+                'smoking_status_smokes':smoking_status_smoke
+            }
+        )
+        pred = model.predict([X])[0]
+        prod_prob = model.predict([X])[0]
+        # print(prediction)
+        if pred:# stroke
+            prediction = '您很有可能中風，請至一案進行健康檢查'
+        else:
+            prediction = 'No stroke'
+        # prediction = model.predict([[
+        #     age,
+        #     have_hypertension,
+        #     have_heartdisease,
+        #     avg_glucose,
+        #     bmi, 
+        #     gender_Female,
+        #     gedner_Male,
+        #     married_no,
+        #     married_yes,
+        #     Govt_job,
+        #     never_worke,
+            
+        # ]])
+        # print(prediction)
+        return render_template('index.html',prediction=prediction)
 
 if __name__ == "__main__":
     app.run()

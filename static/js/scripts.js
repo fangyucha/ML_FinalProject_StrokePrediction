@@ -66,17 +66,24 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
 });
+
+let sub=document.getElementById('submitButton');
 let space=document.getElementById('showage')
+
 function judgeage(){
     let Age =document.getElementById("age");
+    
     // fetch("/judge_age",{method:'post',body:Age_s})
     // .then(Response=>Response.text())
     // .then(Response=>age(Response))
     if (parseInt(Age.value)<=16){
+        // sub.setAttribute("disabled", true)
+        sub.disabled=true
         console.log(Age.value)
         age("輸入請大於16歲")
     }
     else{
+        sub.disabled=false;
         age("")
     }
 }

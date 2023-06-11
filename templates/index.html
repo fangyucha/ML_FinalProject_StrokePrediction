@@ -34,8 +34,9 @@
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#aboutstroke">About stroke</a></li>
                     <li class="nav-item"><a class="nav-link" href="#prediction">Prediction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Data analyze </a></li>
                     <li class="nav-item"><a class="nav-link" href="#ourmodel">About our model</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Diagram</a></li>
+   
 
                 </ul>
             </div>
@@ -47,7 +48,7 @@
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">About this website</h1>
+                    <h1 class="text-white font-weight-bold">Stroke-Predict</h1>
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
@@ -62,13 +63,22 @@
     <section class="page-section bg-primary" id="aboutstroke">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">About stroke!</h2>
+                <div class="col-lg-8 ">
+                    <h2 class="text-white mt-0 text-center">About stroke!</h2>
                     <hr class="divider divider-light" />
-                    <p class="text-white-75 mb-4">Start Bootstrap has everything you need to get your new website up and
-                        running in no time! Choose one of our open source, free to download, and easy to use themes! No
-                        strings attached!</p>
-                    <a class="btn btn-light btn-xl" href="#prediction">Start prediction!</a>
+                    <p class="text-white-75 text-center mb-4" >有許多因素會造成中風：<br>
+                        <ol>
+                            <li>年齡＆性別：中風盛行率為19.82/1,000，每一千個人約有20人會中風，其中男性中風機率又比女性高，好發於75-79歲</li>
+                            <li>居住地區：對於高年齡族群，低都市化程度地區居民罹患中風發生率較高。對於年輕人，都會區中風的年輕人比鄉村地區較易中風，都會地區每一千人有18.9人發病，鄉村地區則為13.0人 </li>
+                            <li>BMI:中風的原因有4成是因肥胖所造成，BMI≧24導致中風之風險是一般人的1.69倍，其中男性中風機率又比女性高</li>
+                            <li>心臟病：若心臟中滯留形成血塊，且不幸掉落到腦部，便形成腦中風通常年輕人（小於45歲）因心臟問題引起腦中風的機會較多</li>
+                            <li>高血壓:約有 50％的腦中風是高血壓引起的。</li>
+                            <li>血糖值:第 2 型糖尿病患者得腦中風的機率比正常人多五倍，而無症狀的高血糖患者比正常血糖的人得腦中風的機會高出 3.5 倍。</li>
+                            <li>抽菸：抽菸導致男性中風比例為 14.2 %；女性中風比例為 3.1 %，且吸菸時間越久，菸癮越重，導致中風的機率越高。</li>
+                        </ol>
+                    </p>
+                    <center><a class="btn btn-light btn-xl " href="#prediction">Start prediction!</a></center>
+                    
                 </div>
             </div>
         </div>
@@ -92,10 +102,10 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form action="/submit" method="post" id="contactForm" novalidate>
+                    <form action="{{url_for('submit')}}" method="post" id="contactForm" novalidate>
                         <!-- id input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="id" type="text" placeholder="Enter your id..." required />
+                            <input class="form-control" id="id" type="text" name="id" placeholder="Enter your id..." required />
                             <label for="id">id</label>
                             <div class="invalid-feedback">A id is required.</div>
                         </div>
@@ -148,15 +158,15 @@
                             <select class="form-control" id="ever_married" type="ever_married" required
                                 name="ever_married">
                                 <option value="">Have you ever married</option>
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
                             </select>
                             <div class="invalid-feedback">required.</div>
                         </div>
 
                         <!-- work_type input-->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="work_type" type="work_type" required name="work_type">
+                            <select class="form-control" id="work_type" type="work_type" required  name="work_type" >
                                 <option value="">what's your work type</option>
                                 <option value="Govt_job">Government job</option>
                                 <option value="Never_worked">Never worked</option>
@@ -181,7 +191,7 @@
                         <!-- avg_glucose_level input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="avg_glucose_level" type="text"
-                                placeholder="Enter your average glucose level..." required />
+                                placeholder="Enter your average glucose level..." name="avg_glucose" required />
                             <label for="avg_glucose_level">average glucose level</label>
                             <div class="invalid-feedback">A average
                                 glucose level is required.</div>
@@ -189,7 +199,7 @@
 
                         <!-- bmi input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="bmi" type="text" placeholder="Enter your bmi..." required />
+                            <input class="form-control" id="bmi" type="text" placeholder="Enter your bmi..." required  name="bmi" />
                             <label for="bmi">bmi</label>
                             <div class="invalid-feedback">A bmi is required.</div>
                         </div>
@@ -208,18 +218,18 @@
 
 
                         <!-- Message input-->
-                        <div class="form-floating mb-3">
+                        <!-- <div class="form-floating mb-3">
                             <textarea class="form-control" id="message" type="text"
                                 placeholder="Enter your message here..." style="height: 10rem" required></textarea>
                             <label for="message">Message</label>
                             <div class="invalid-feedback">A message is required.
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Submit success message-->
                         <!---->
                         <!-- This is what your users will see when the form-->
                         <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
+                        <!-- <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
                                 <div class="fw-bolder">Form submission successful!</div>
                                 To activate this form, sign up at
@@ -227,17 +237,17 @@
                                 <a
                                     href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Submit error message-->
                         <!---->
                         <!-- This is what your users will see when there is-->
                         <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
+                        <!-- <div class="d-none" id="submitErrorMessage">
                             <div class="text-center text-danger mb-3">Error sending message!</div>
-                        </div>
+                        </div> -->
                         <!-- Submit Button-->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button>
+                            <input class="btn btn-primary btn-xl" id="submitButton" type="submit">
                         </div>
                     </form>
                     <div>
@@ -250,13 +260,154 @@
         </div>
         </div>
     </section>
+    <div id="aboutData">
+        <center>
+            <h2 class="mt-0">Data analyze</h2>
+
+        </center>
+        <h2>關於資料</h2>
+        資料數量：15304筆<br>
+        類別數量：有中風、沒中風共2種<br>
+        類別比例：<br>
+        有中風：沒中風 = 23 : 1 (14672:632) 整體上來說，對於每一個變因而言，有中風的比例都會比較小，所以要選擇ROC, AUC等指標<br>
+        <h2>資料前處理</h2>
+        1.性別：Other只有1筆，因此移除Other<br>
+        2.取16歲以上的資料：16歲以下的樣本比較沒有代表性，因為(1)一般認為心臟疾病、高血壓與中風會比較有相關性，但是對於幼齡兒童來說，我們不知道做這些檢測的可信度是否足夠；對於稍長一點的青少年，此兩種疾病是完全沒有，將資料納入訓練可能會影響結果。所以我們的策略就是將系統開放給16歲以上的人使用。<br>
+        3.binning for BMI：BMI的數值依據不同的區間會有不同的意義(過輕，正常，過重，肥胖，重度肥胖)，並且我們發現BMI有一些極端值，例如說將近80，這時候我們就可以對BMI做binning來減少極端值的影響。(但是經過後來的觀察，BMI對於中風沒有相當明顯的影響)<br>
+        4.one-hot encoding：使用one-hot encoding對類別變數進行編碼<br>
+    </div>
+    <!-- diagram-->
+    <div id="portfolio">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/work_stroke.png') }}"
+                        title="自雇者(Self-employed)中風的比例稍微高一些">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/work_stroke.png') }}" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">工作型態</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/avg_glucouse.png') }}"
+                        title="用小提琴圖觀察平均血糖值：可以明顯地看出，沒中風的人主要血糖值主要都分布在平均值上；而有中風的人除了分布在平均值上，也分布在血糖值偏高的部分（在尾端的部分）">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/avg_glucouse.png') }}" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">血糖值平均值和中風關係</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/heart.png') }}"
+                        title="同時有高血壓和心臟病時，中風的機率會明顯提高">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/heart.png') }}" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">高血壓和心臟病對中風影響</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/gender.png') }}"
+                        title="在中風的群體中，男性比女性略高">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/gender.png') }}" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">性別與中風關係</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/age.png') }}"
+                        title="年齡高越容易中風">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/age.png') }}."
+                            alt="..." height="600px" >
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">年齡和中風關係</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/5.jpg') }}"
+                        title="Project sder">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/6.jpg') }}" alt="..." />
+                        <div class="portfolio-box-caption p-3">
+                            <div class="project-category text-white-50">Categoryddd</div>
+                            <div class="project-name">Projectdefg </div>
+                        </div>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
     <!-- About our model-->
     <section class="page-section" id="ourmodel">
         <div class="container px-4 px-lg-5">
             <h2 class="text-center mt-0">Our model</h2>
             <hr class="divider" />
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-lg-3 col-md-6 text-center">
+            <p>
+                <h2>度量指標</h2>
+                <h4>ROC(Receiver operator characteristic）</h4>
+                ROC空間將偽陽性率（FPR）定義為 X 軸，真陽性率（TPR）定義為 Y 軸。<br>
+                <ul>
+                    <li>TPR：在所有實際為陽性的樣本中，被正確地判斷為陽性之比率。</li>
+                    <img src="static/assets/img/TPR.png" >
+                    <li>FPR：在所有實際為陰性的樣本中，被錯誤地判斷為陽性之比率。</li>
+                    <img src="static/assets/img/FPR.png">
+                </ul>
+                <br>
+                給定一個二元分類模型和它的閾值，就能從所有樣本的（陽性／陰性）真實值和預測值計算出一個 (X=FPR, Y=TPR) 座標點。將同一模型每個閾值的 (FPR, TPR) 座標都畫在ROC空間裡，就成為特定模型的ROC曲線。<br>
+                <img src="static/assets/img/ROC.png" width="400px" height="400px"><br>
+
+
+                <h4>AUC(Area under the Curve of ROC)</h4>
+                ROC曲線下方的面積，其意義為：<br>
+                <ul>
+                    <li>AUC = 1，是完美分類器，採用這個預測模型時，存在至少一個閾值能得出完美預測。絕大多數預測的場合，不存在完美分類器。</li>
+                    <li>0.5 < AUC < 1，優於隨機猜測。這個分類器（模型）妥善設定閾值的話，能有預測價值。</li>
+                    <li>AUC = 0.5，跟隨機猜測一樣（例：丟銅板），模型沒有預測價值。</li>
+                    <li>AUC < 0.5，比隨機猜測還差；但只要總是反預測而行，就優於隨機猜測</li>
+                    <img src="static/assets/img/AUC.png" width="400px" height="400px"><br>
+                </ul>
+
+                <h2>模型訓練</h2>
+                <h4>對於不同的類別指定不同的訓練權重：scale pos weight</h4>
+                在資料類別不平衡的情況下，將xgboost模型的損失函數依據類別的比例進行調整，訓練結束之後AUC score上升為0.62，tuning之後為0.78，在第二次submission得到()的分數<br>
+                imblearn：這是一個針對不平衡資料集開發的套件，包含數據處理的方法，以及針對不平衡類別開發的模型<br>
+
+                <h4>SMOTE</h4>
+                <img src="static/assets/img/SMOTE.png" width="600px" height="400px"><br>
+                一種對資料進行上採樣(Upsampling)的方法，在類別多跟類別少的資料之間生成新的資料
+                <ol>
+                    <li>設定一個採樣倍率 N，也就是對每個樣本需要生成幾個合成樣本</li>
+                    <li>設定一個近鄰值 K ，針對該樣本找出 K 個最近鄰樣本並從中隨機選一個</li>
+                    <li> 根據以下公式來創造 N 個樣本</li>
+                    <img src="static/assets/img/SMOTE2.png" ><br>
+                </ol>
+
+                <h4>EasyEnsemble (最後採用的方法)</h4>
+                演算法先將資料切分成好數個子集，並且對多數標籤做隨機採樣，採樣次數等於子集數量，並且採樣數量等於少數類別的數量。將採樣後的多數類別資料，以及少數類別資料放入每一個子集中，對於每一個子集進行使用不同的分類器進行ensemble learning。進行預測時，會將資料輸入每一個分類器，並將這些預測結果進行加權。<br>
+                <img src="static/assets/img/EasyEnsemble.png" width="400px" height="400px"><br>
+                </p>
+            <!-- <div class="row gx-4 gx-lg-5"> -->
+                <!-- <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
                         <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
                         <h3 class="h4 mb-2">Sturdy Themes</h3>
@@ -282,92 +433,11 @@
                         <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
                         <h3 class="h4 mb-2">Made with Love</h3>
                         <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- diagram-->
-    <div id="portfolio">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/1.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/1.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/2.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/2.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/3.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/3.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/4.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/4.jpg') }}."
-                            alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/5.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/5.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/6.jpg') }}"
-                        title="Project Name">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/6.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption p-3">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer-->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">

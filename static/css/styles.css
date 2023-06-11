@@ -600,7 +600,8 @@ progress {
 
 .img-fluid {
   max-width: 100%;
-  height: auto;
+  height: 500px;
+
 }
 
 .img-thumbnail {
@@ -7664,7 +7665,7 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 2.5rem !important;
 }
 
 .mb-5 {
@@ -10964,6 +10965,12 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box, #portfolio .container-sm .portfolio-box, #portfolio .container-md .portfolio-box, #portfolio .container-lg .portfolio-box, #portfolio .container-xl .portfolio-box, #portfolio .container-xxl .portfolio-box {
   position: relative;
   display: block;
+}
+#aboutData{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: center center;
 }
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption, #portfolio .container-sm .portfolio-box .portfolio-box-caption, #portfolio .container-md .portfolio-box .portfolio-box-caption, #portfolio .container-lg .portfolio-box .portfolio-box-caption, #portfolio .container-xl .portfolio-box .portfolio-box-caption, #portfolio .container-xxl .portfolio-box .portfolio-box-caption {
   display: flex;

@@ -27,7 +27,7 @@
   var form = document.querySelector('#contactForm');
 
   if (form) {
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('/submit', function (event) {
       if (!form.checkValidity()) {
         event.preventDefault();
         event.stopPropagation();

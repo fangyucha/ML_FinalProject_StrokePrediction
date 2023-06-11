@@ -6,7 +6,7 @@ from flask import Flask, request, render_template,url_for,redirect
 import json as js
 app = Flask(__name__)
 app.static_folder = 'static'
-
+app.debug = True
 @app.route("/")
 def formPage():
     return render_template('index.html')

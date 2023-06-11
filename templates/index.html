@@ -111,16 +111,16 @@
                             </select>
                             <div class="invalid-feedback">gender is required.</div>
                         </div>
-                        
+
                         <!-- age input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="age" type="text" value="12"  oninput="judgeage();" placeholder="Enter your age"
-                                data-sb-validations="required" />
+                            <input class="form-control" id="age" type="text" value="12" oninput="judgeage();"
+                                placeholder="Enter your age" />
                             <label for="age">Age</label>
                             <div id="showage"></div>
                             <div class="invalid-feedback">age is required.</div>
                         </div>
-                   
+
                         <!-- hypertension input-->
                         <div class="form-floating mb-3">
                             <select class="form-control" id="hypertension" type="hypertension" required
@@ -240,6 +240,10 @@
                             <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button>
                         </div>
                     </form>
+                    <div>
+                        <!--預測回傳值-->
+                        <h3>{{prediction}}</h3>
+                    </div>
                 </div>
             </div>
 
@@ -383,6 +387,35 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).on('submit', '#contactForm', function (e) {
+            console.log('hello');
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/submit',
+                data: {
+                    gender: $("#gender").val(),
+                    age: $("#age").val(),
+                    hypertension: $("#hypertension").val(),
+                    heart_disease: $("#heart_disease").val(),
+                    ever_married: $("#ever_married").val(),
+                    work_type: $("#work_type").val(),
+                    Residence_type: $("#Residence_type").val(),
+                    avg_glucose_level: $("#avg_glucose_level").val(),
+                    bmi: $("#bmi").val(),
+                    smoking_status: $("#smoking_status").val(),
+                },
+                success: function () {
+                    //alert('success');
+                }
+            })
+        });
+    </script>
 </body>
 
 </html>

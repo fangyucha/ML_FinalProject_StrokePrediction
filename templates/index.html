@@ -46,7 +46,7 @@
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">中風預測</h1>
+                    <h1 class="text-white font-weight-bold">Stroke-Predict</h1>
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
@@ -61,21 +61,22 @@
     <section class="page-section bg-primary" id="aboutstroke">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">About stroke!</h2>
+                <div class="col-lg-8 ">
+                    <h2 class="text-white mt-0 text-center">About stroke!</h2>
                     <hr class="divider divider-light" />
-                    <p class="text-white-75 mb-4">有許多因素會造成中風<br>
+                    <p class="text-white-75 text-center mb-4" >有許多因素會造成中風<br>
                         <ol class="lh-lg">
                             <li>年齡＆性別：中風盛行率為19.82/1,000，每一千個人約有20人會中風，其中男性中風機率又比女性高，好發於75-79歲</li>
                             <li>居住地區：對於高年齡族群，低都市化程度地區居民罹患中風發生率較高。對於年輕人，都會區中風的年輕人比鄉村地區較易中風，都會地區每一千人有18.9人發病，鄉村地區則為13.0人 </li>
                             <li>BMI:中風的原因有4成是因肥胖所造成，BMI≧24導致中風之風險是一般人的1.69倍，其中男性中風機率又比女性高</li>
-                            <li>心臟病：若心臟中滯留形成血塊，且不幸掉落到腦部，便形成腦中風通常年輕人（<45歲）因心臟問題引起腦中風的機會較多)</li>
+                            <li>心臟病：若心臟中滯留形成血塊，且不幸掉落到腦部，便形成腦中風通常年輕人（小於45歲）因心臟問題引起腦中風的機會較多</li>
                             <li>高血壓:約有 50％的腦中風是高血壓引起的。</li>
                             <li>血糖值:第 2 型糖尿病患者得腦中風的機率比正常人多五倍，而無症狀的高血糖患者比正常血糖的人得腦中風的機會高出 3.5 倍。</li>
                             <li>抽菸：抽菸導致男性中風比例為 14.2 %；女性中風比例為 3.1 %，且吸菸時間越久，菸癮越重，導致中風的機率越高。</li>
                         </ol>
                     </p>
-                    <a class="btn btn-light btn-xl" href="#prediction">Start prediction!</a>
+                    <center><a class="btn btn-light btn-xl " href="#prediction">Start prediction!</a></center>
+                    
                 </div>
             </div>
         </div>
@@ -253,7 +254,7 @@
         </div>
         </div>
     </section>
-    <div>
+    <div id="aboutData">
         <center>
             <h2 class="mt-0">Data analyze</h2>
 
@@ -311,19 +312,6 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/age.png') }}"
-                        title="年齡高越容易中風">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/age.png') }}."
-                            alt="..." height="600px" >
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">資料觀察</div>
-                            <div class="project-name">年齡和中風關係</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
                         href="{{ url_for('static', filename='assets/img/gender.png') }}"
                         title="在中風的群體中，男性比女性略高">
                         <img class="img-fluid"
@@ -336,6 +324,20 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a class="portfolio-box"
+                        href="{{ url_for('static', filename='assets/img/age.png') }}"
+                        title="年齡高越容易中風">
+                        <img class="img-fluid"
+                            src="{{ url_for('static', filename='assets/img/age.png') }}."
+                            alt="..." height="600px" >
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">資料觀察</div>
+                            <div class="project-name">年齡和中風關係</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box"
                         href="{{ url_for('static', filename='assets/img/portfolio/fullsize/5.jpg') }}"
                         title="Project sder">
                         <img class="img-fluid"
@@ -345,7 +347,7 @@
                             <div class="project-name">Projectdefg </div>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -385,13 +387,13 @@
                 imblearn：這是一個針對不平衡資料集開發的套件，包含數據處理的方法，以及針對不平衡類別開發的模型<br>
 
                 <h4>SMOTE</h4>
-                <img src="static/assets/img/SMOTE.png" width="500px" height="400px"><br>
+                <img src="static/assets/img/SMOTE.png" width="600px" height="400px"><br>
                 一種對資料進行上採樣(Upsampling)的方法，在類別多跟類別少的資料之間生成新的資料
                 <ol>
                     <li>設定一個採樣倍率 N，也就是對每個樣本需要生成幾個合成樣本</li>
                     <li>設定一個近鄰值 K ，針對該樣本找出 K 個最近鄰樣本並從中隨機選一個</li>
                     <li> 根據以下公式來創造 N 個樣本</li>
-                    <img src="static/assets/img/SMOTE2.png"><br>
+                    <img src="static/assets/img/SMOTE2.png" ><br>
                 </ol>
 
                 <h4>EasyEnsemble (最後採用的方法)</h4>

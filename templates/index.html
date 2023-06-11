@@ -66,13 +66,13 @@
                     <hr class="divider divider-light" />
                     <p class="text-white-75 text-center mb-4" >有許多因素會造成中風<br>
                         <ol class="lh-lg">
-                            <li>年齡＆性別：中風盛行率為19.82/1,000，每一千個人約有20人會中風，其中男性中風機率又比女性高，好發於75-79歲</li>
-                            <li>居住地區：對於高年齡族群，低都市化程度地區居民罹患中風發生率較高。對於年輕人，都會區中風的年輕人比鄉村地區較易中風，都會地區每一千人有18.9人發病，鄉村地區則為13.0人 </li>
-                            <li>BMI:中風的原因有4成是因肥胖所造成，BMI≧24導致中風之風險是一般人的1.69倍，其中男性中風機率又比女性高</li>
-                            <li>心臟病：若心臟中滯留形成血塊，且不幸掉落到腦部，便形成腦中風通常年輕人（小於45歲）因心臟問題引起腦中風的機會較多</li>
-                            <li>高血壓:約有 50％的腦中風是高血壓引起的。</li>
-                            <li>血糖值:第 2 型糖尿病患者得腦中風的機率比正常人多五倍，而無症狀的高血糖患者比正常血糖的人得腦中風的機會高出 3.5 倍。</li>
-                            <li>抽菸：抽菸導致男性中風比例為 14.2 %；女性中風比例為 3.1 %，且吸菸時間越久，菸癮越重，導致中風的機率越高。</li>
+                            <li class="m-2">年齡＆性別：中風盛行率為19.82/1,000，每一千個人約有20人會中風，其中男性中風機率又比女性高，好發於75-79歲</li>
+                            <li class="m-2">居住地區：對於高年齡族群，低都市化程度地區居民罹患中風發生率較高。對於年輕人，都會區中風的年輕人比鄉村地區較易中風，都會地區每一千人有18.9人發病，鄉村地區則為13.0人 </li>
+                            <li class="m-2">BMI：中風的原因有4成是因肥胖所造成，BMI≧24導致中風之風險是一般人的1.69倍，其中男性中風機率又比女性高</li>
+                            <li class="m-2">心臟病：若心臟中滯留形成血塊，且不幸掉落到腦部，便形成腦中風通常年輕人（小於45歲）因心臟問題引起腦中風的機會較多</li>
+                            <li class="m-2">高血壓：約有 50％的腦中風是高血壓引起的。</li>
+                            <li class="m-2">血糖值：第 2 型糖尿病患者得腦中風的機率比正常人多五倍，而無症狀的高血糖患者比正常血糖的人得腦中風的機會高出 3.5 倍。</li>
+                            <li class="m-2">抽菸：抽菸導致男性中風比例為 14.2 %；女性中風比例為 3.1 %，且吸菸時間越久，菸癮越重，導致中風的機率越高。</li>
                         </ol>
                     </p>
                     <center><a class="btn btn-light btn-xl " href="#prediction">Start prediction!</a></center>
@@ -102,11 +102,11 @@
                     <!-- to get an API token!-->
                     <form action="{{url_for('submit')}}" method="post" id="contactForm" novalidate>
                         <!-- id input-->
-                        <div class="form-floating mb-3">
+                        <!-- <div class="form-floating mb-3">
                             <input class="form-control" id="id" type="text" name="id" placeholder="Enter your id..." required />
                             <label for="id">id</label>
                             <div class="invalid-feedback">A id is required.</div>
-                        </div>
+                        </div> -->
 
 
                         <!-- gender input-->
@@ -122,10 +122,10 @@
                         
                         <!-- age input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="age" type="text" value="12"  oninput="judgeage();" placeholder="Enter your age"
+                            <input class="form-control" id="age" type="text" oninput="judgeage();" placeholder="Enter your age"
                                 data-sb-validations="required" name="age"/>
                             <label for="age">Age</label>
-                            <div id="showage"></div>
+                            <div id="showage" class="my-2 text-danger"></div>
                             <div class="invalid-feedback">age is required.</div>
                         </div>
                    
@@ -254,26 +254,44 @@
         </div>
         </div>
     </section>
+    <div>{{prediction}}</div>
     <div id="aboutData">
         <center>
             <h2 class="mt-0">Data analyze</h2>
 
         </center>
-        <h2>關於資料</h2>
+        <div class="card mt-5 mx-auto mw-50 shadow-lg" style="max-width: 50%;">
+            <div class="card-header">關於資料</div>
+            <ul class="list-group list-group-flush  lh-lg">
+              <li class="list-group-item">資料數量：15304筆</li>
+              <li class="list-group-item">類別數量：有中風、沒中風共2種</li>
+              <li class="list-group-item">類別比例：有中風：沒中風 = 23 : 1 (14672:632) 整體上來說，對於每一個變因而言，有中風的比例都會比較小，所以要選擇ROC, AUC等指標</li>
+            </ul>
+        </div>
+        <!-- <h2>關於資料</h2>
         資料數量：15304筆<br>
         類別數量：有中風、沒中風共2種<br>
         類別比例：<br>
-        有中風：沒中風 = 23 : 1 (14672:632) 整體上來說，對於每一個變因而言，有中風的比例都會比較小，所以要選擇ROC, AUC等指標<br>
-        <h2>資料前處理</h2>
+        有中風：沒中風 = 23 : 1 (14672:632) 整體上來說，對於每一個變因而言，有中風的比例都會比較小，所以要選擇ROC, AUC等指標<br> -->
+        <div class="card my-5 mx-auto mw-50 shadow-lg" style="max-width: 50%;">
+            <div class="card-header">資料前處理</div>
+            <ul class="list-group list-group-flush lh-lg">
+              <li class="list-group-item">1. 性別：Other只有1筆，因此移除Other</li>
+              <li class="list-group-item">2. 取16歲以上的資料：16歲以下的樣本比較沒有代表性，因為(1)一般認為心臟疾病、高血壓與中風會比較有相關性，但是對於幼齡兒童來說，我們不知道做這些檢測的可信度是否足夠；對於稍長一點的青少年，此兩種疾病是完全沒有，將資料納入訓練可能會影響結果。所以我們的策略就是將系統開放給16歲以上的人使用。</li>
+              <li class="list-group-item">3. binning for BMI：BMI的數值依據不同的區間會有不同的意義(過輕，正常，過重，肥胖，重度肥胖)，並且我們發現BMI有一些極端值，例如說將近80，這時候我們就可以對BMI做binning來減少極端值的影響。(但是經過後來的觀察，BMI對於中風沒有相當明顯的影響)</li>
+              <li class="list-group-item">4. one-hot encoding：使用one-hot encoding對類別變數進行編碼</li>
+            </ul>
+        </div>
+        <!-- <h2>資料前處理</h2>
         1.性別：Other只有1筆，因此移除Other<br>
         2.取16歲以上的資料：16歲以下的樣本比較沒有代表性，因為(1)一般認為心臟疾病、高血壓與中風會比較有相關性，但是對於幼齡兒童來說，我們不知道做這些檢測的可信度是否足夠；對於稍長一點的青少年，此兩種疾病是完全沒有，將資料納入訓練可能會影響結果。所以我們的策略就是將系統開放給16歲以上的人使用。<br>
         3.binning for BMI：BMI的數值依據不同的區間會有不同的意義(過輕，正常，過重，肥胖，重度肥胖)，並且我們發現BMI有一些極端值，例如說將近80，這時候我們就可以對BMI做binning來減少極端值的影響。(但是經過後來的觀察，BMI對於中風沒有相當明顯的影響)<br>
-        4.one-hot encoding：使用one-hot encoding對類別變數進行編碼<br>
+        4.one-hot encoding：使用one-hot encoding對類別變數進行編碼<br> -->
     </div>
     <!-- diagram-->
     <div id="portfolio">
         <div class="container-fluid p-0">
-            <div class="row g-0">
+            <div class="row g-0 justify-content-center">
                 <div class="col-lg-4 col-sm-6">
                     <a class="portfolio-box"
                         href="{{ url_for('static', filename='assets/img/work_stroke.png') }}"
@@ -328,26 +346,13 @@
                         title="年齡高越容易中風">
                         <img class="img-fluid"
                             src="{{ url_for('static', filename='assets/img/age.png') }}."
-                            alt="..." height="600px" >
+                            alt="..." height="600px">
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">資料觀察</div>
                             <div class="project-name">年齡和中風關係</div>
                         </div>
                     </a>
                 </div>
-
-                <!-- <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="{{ url_for('static', filename='assets/img/portfolio/fullsize/5.jpg') }}"
-                        title="Project sder">
-                        <img class="img-fluid"
-                            src="{{ url_for('static', filename='assets/img/portfolio/thumbnails/6.jpg') }}" alt="..." />
-                        <div class="portfolio-box-caption p-3">
-                            <div class="project-category text-white-50">Categoryddd</div>
-                            <div class="project-name">Projectdefg </div>
-                        </div>
-                    </a>
-                </div> -->
             </div>
         </div>
     </div>

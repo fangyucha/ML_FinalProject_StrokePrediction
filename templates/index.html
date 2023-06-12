@@ -99,18 +99,10 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form action="/submit" method="post" id="contactForm" novalidate>
-                        <!-- id input-->
-                        <!-- <div class="form-floating mb-3">
-                            <input class="form-control" id="id" type="text" name="id" placeholder="Enter your id..." required />
-                            <label for="id">id</label>
-                            <div class="invalid-feedback">A id is required.</div>
-                        </div> -->
-
-
-                        <!-- gender input-->
+                    <form class="needs-validation"  action="/submit" method="post" id="contactForm" novalidate>
+                        
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="gender" type="gender" required name="gender">
+                            <select class="form-control" id="gender" type="gender" name="gender" required>
                                 <option value="">Choose your gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
@@ -118,7 +110,6 @@
                             </select>
                             <div class="invalid-feedback">gender is required.</div>
                         </div>
-
                         <!-- age input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="age" type="text" oninput="judgeage();" placeholder="Enter your age"

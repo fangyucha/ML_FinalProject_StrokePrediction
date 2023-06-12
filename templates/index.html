@@ -99,8 +99,8 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form class="needs-validation"  action="/submit" method="post" id="contactForm" novalidate>
-                        
+                    <form action="/submit" method="post" id="contactForm" >
+                        <!-- gender input-->
                         <div class="form-floating mb-3">
                             <select class="form-control" id="gender" type="gender" name="gender" required>
                                 <option value="">Choose your gender</option>
@@ -113,7 +113,7 @@
                         <!-- age input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="age" type="text" oninput="judgeage();" placeholder="Enter your age"
-                                data-sb-validations="required" name="age"/>
+                               required name="age"/>
                             <label for="age">Age</label>
                             <div id="showage" class="my-2 text-danger"></div>
                             <div class="invalid-feedback">age is required.</div>
@@ -423,7 +423,6 @@
         let showResult=document.getElementById('showResult')
 
         $(document).on('submit', '#contactForm', function (e) {
-            console.log('hello');
             e.preventDefault();
             $.ajax({
                 type: 'POST',

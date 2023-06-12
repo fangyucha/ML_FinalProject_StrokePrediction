@@ -123,7 +123,7 @@ def submit():
         print('ddd')
         print(pred)
         if pred:# stroke
-            prediction = '您很有可能中風，請至一案進行健康檢查'
+            prediction = '您很有可能中風，請至醫院進行健康檢查'
         else:
             prediction = 'No stroke'
         # prediction = model.predict([[
